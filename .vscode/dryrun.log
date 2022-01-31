@@ -1,0 +1,12 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/vagrant/Development/TDPerform'
+echo
+echo Running unit tests...
+echo
+python3.9 /home/vagrant/Development/TDPerform/test/UnitTestMain.py
+echo
+echo Testing and building final package...
+echo
+python3.9 -m PyInstaller /home/vagrant/Development/TDPerform/src/TDPerform.py --onefile
+make: Leaving directory '/home/vagrant/Development/TDPerform'
+ 

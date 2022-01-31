@@ -1,0 +1,389 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sat Jan 29 21:18:13 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AGENT_FOLDER = /home/vagrant/.vscode-server
+# environment
+XDG_SESSION_TYPE = tty
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# default
+MAKE_VERSION := 4.2.1
+# makefile
+CURDIR := /home/vagrant/Development/TDPerform
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+# makefile (from 'Makefile', line 24)
+OUTPUT_FILE := /home/vagrant/Development/TDPerform/dist/TDPerform
+# environment
+_ = /home/vagrant/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/node
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /home/vagrant
+# environment
+SSH_CONNECTION = 10.0.2.2 49675 10.0.2.15 22
+# environment
+PATH = /home/vagrant/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/home/vagrant/.local/bin:/home/vagrant/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 21)
+MAIN_SOURCE_FILE := /home/vagrant/Development/TDPerform/src/TDPerform.py
+# makefile (from 'Makefile', line 9)
+TEST_DIR := /home/vagrant/Development/TDPerform/test
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-4c0a697b-4fa8-4e41-a5bf-3683dd6c7038.sock
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# automatic
+%F = $(notdir $%)
+# makefile (from 'Makefile', line 10)
+SOURCE_DIR := /home/vagrant/Development/TDPerform/src
+# makefile (from 'Makefile', line 17)
+TEST_FILES := 
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/vagrant/Development/TDPerform
+# default
+.LOADED := 
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from 'Makefile', line 4)
+PYTHON := python3.9
+# makefile (from 'Makefile', line 20)
+SOURCE_FILES := /home/vagrant/Development/TDPerform/src/TDPerform.py /home/vagrant/Development/TDPerform/src/TdaConfig.py
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
+# environment
+HOME = /home/vagrant
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+LOGNAME = vagrant
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# makefile (from 'Makefile', line 23)
+TARGET_FILE_BASE_NAME := TDPerform
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile (from 'Makefile', line 12)
+DEPLOY_DIR := /usr/local/bin
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 11)
+BUILD_DIR := /home/vagrant/Development/TDPerform/dist
+# environment
+XDG_SESSION_ID = 3
+# environment
+USER = vagrant
+# makefile
+.DEFAULT_GOAL := all
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_CLIENT = 10.0.2.2 49675 22
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+BROWSER = /home/vagrant/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin/helpers/browser.sh
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# makefile (from 'Makefile', line 27)
+PKG_REQ_FILE := requirements.txt
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# makefile (from 'Makefile', line 25)
+DEPLOYED_FILE := /usr/local/bin/TDPerform
+# environment
+VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/vagrant/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/remote/node_modules
+# default
+.RECIPEPREFIX := 
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+LANG = C
+# makefile (from 'Makefile', line 18)
+MAIN_TEST_FILE := /home/vagrant/Development/TDPerform/test/UnitTestMain.py
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# environment
+MOTD_SHOWN = pam
+# variable set hash-table stats:
+# Load=83/1024=8%, Rehash=0, Collisions=15/128=12%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# /home/vagrant/Development/TDPerform/src (device 51, inode 695): 6 files, no impossibilities.
+# /home/vagrant/Development/TDPerform/test (device 51, inode 704): 2 files, no impossibilities.
+# . (device 51, inode 630): 15 files, no impossibilities.
+
+# 23 files, no impossibilities in 3 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+all: /home/vagrant/Development/TDPerform/dist/TDPerform
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+.PHONY: all variables depends install uninstall installdirs clean check
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+uninstall:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 71):
+	@echo
+	@echo Removing final package from ${DEPLOY_DIR}...
+	@echo
+	@sudo rm -f ${DEPLOYED_FILE}
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-01-05 03:11:51.1900307
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+/home/vagrant/Development/TDPerform/src/TdaConfig.py:
+#  Implicit rule search has been done.
+#  Last modified 2022-01-26 02:33:34.153
+#  File has been updated.
+#  Successfully updated.
+
+depends:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 58):
+	@echo
+	@echo Installing Python packages per ${PKG_REQ_FILE}...
+	@echo
+	@pip install -r ${PKG_REQ_FILE}
+
+variables:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 38):
+	@echo
+	@echo Makefile variables
+	@echo
+	@echo PYTHON: ${PYTHON}
+	@echo TEST_DIR: ${TEST_DIR}
+	@echo SOURCE_DIR: ${SOURCE_DIR}
+	@echo BUILD_DIR: ${BUILD_DIR}
+	@echo DEPLOY_DIR: ${DEPLOY_DIR}
+	@echo TEST_FILES: ${TEST_FILES}
+	@echo MAIN_TEST_FILE: ${MAIN_TEST_FILE}
+	@echo SOURCE_FILES: ${SOURCE_FILES}
+	@echo OUTPUT_FILE: ${OUTPUT_FILE}
+	@echo DEPLOYED_FILE: ${DEPLOYED_FILE}
+	@echo MAIN_SOURCE_FILE: ${MAIN_SOURCE_FILE}
+	@echo
+
+/home/vagrant/Development/TDPerform/dist/TDPerform: /home/vagrant/Development/TDPerform/src/TDPerform.py /home/vagrant/Development/TDPerform/src/TdaConfig.py | check
+#  Implicit rule search has not been done.
+ 
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 98):
+	@echo
+	@echo Testing and building final package...
+	@echo
+	@${PYTHON} -m PyInstaller ${MAIN_SOURCE_FILE} --onefile
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 83):
+	@echo
+	@echo Cleaning build related directories...
+	@echo
+	@rm -rf build/*
+	@rm -rf dist/*
+	@rm -f ${TARGET_FILE_BASE_NAME}.spec
+
+# Not a target:
+/home/vagrant/Development/TDPerform/src/TDPerform.py:
+#  Implicit rule search has been done.
+#  Last modified 2022-01-29 21:07:54.206195
+#  File has been updated.
+#  Successfully updated.
+
+check:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := check
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/13=15%
+#  recipe to execute (from 'Makefile', line 91):
+	@echo
+	@echo Running unit tests...
+	@echo
+	@${PYTHON} ${MAIN_TEST_FILE}
+
+installdirs:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 77):
+	@echo
+	@echo Creating ${DEPLOY_DIR}...
+	@echo
+	@sudo mkdir -p ${DEPLOY_DIR}
+
+install: all | installdirs
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 64):
+	@echo
+	@echo Copying final package to ${DEPLOY_DIR}...
+	@echo
+	@sudo cp ${OUTPUT_FILE} ${DEPLOY_DIR}
+	@sudo chmod u=rwx,g=rx,o=rx ${DEPLOYED_FILE}
+
+# files hash-table stats:
+# Load=15/1024=1%, Rehash=0, Collisions=4/49=8%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 37 / storage = 542 B / avg = 14 B
+# current buf: size = 8162 B / used = 542 B / count = 37 / avg = 14 B
+
+# strcache performance: lookups = 69 / hit rate = 46%
+# hash-table stats:
+# Load=37/8192=0%, Rehash=0, Collisions=3/69=4%
+# Finished Make data base on Sat Jan 29 21:18:13 2022
+
+ 

@@ -1,0 +1,4 @@
+tda-api >= 1.5
+cffi >= 1.15.0
+PyMongo >= 3.12.3
+PyInstaller >= 4.7
