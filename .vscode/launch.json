@@ -18,8 +18,7 @@
             "program": "${workspaceFolder}/src/TdaPerform.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/data/Settings.json",
-                "${workspaceFolder}/data/Secrets.json"
+                "${workspaceFolder}/data/Settings.json"
             ]
         }
     ]

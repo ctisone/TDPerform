@@ -2,18 +2,18 @@
 # Imports
 #************
 import json
+import os
 
 
 class TdaConfig:
     """ Encapsulates the configuration files used by the program """
 
-    def __init__(self, settingsFileName: str, secretsFileName : str) -> None:
+    def __init__(self, settingsFileName: str) -> None:
         """ Class constructor. Reads and parses the secrets JSON file.
 
         Parameters
         ----------
         settingsFileName:  Fully pathed name of the settings JSON file.
-        secretsFileName:  Fully pathed name of the secrets JSON file.
         
         Returns
         -------
@@ -21,11 +21,18 @@ class TdaConfig:
         """
         with open(settingsFileName, "rt") as jsonFile:
             self.__settings = json.loads(jsonFile.read())
-        with open(secretsFileName, "rt") as jsonFile:
+
+        # Patch the names of files specified on the settings file to be absolute pathed
+        self.__settings["oAuthFile"] = TdaConfig._patchFileName(self.__settings["oAuthFile"], settingsFileName)
+        self.__settings["secretsFile"] = TdaConfig._patchFileName(self.__settings["secretsFile"], settingsFileName)
+
+        # Now read the secrets file
+        with open(self.__settings["secretsFile"], "rt") as jsonFile:
             self.__secrets = json.loads(jsonFile.read())
         return
 
-    def getOAuthTokenFileName(self) -> str:
+    @property
+    def oAuthTokenFileName(self) -> str:
         """ Retrieves the oAuth token file name from the secrets file.
 
         Parameters
@@ -36,9 +43,10 @@ class TdaConfig:
         -------
         The name of the oAuth token file.
         """
-        return(self.__secrets["tokenFile"])
+        return(self.__settings["oAuthFile"])
 
-    def getApiKey(self) -> str:
+    @property
+    def apiKey(self) -> str:
         """  Retrieves the account API key from the secrets file.
 
         Parameters
@@ -51,7 +59,8 @@ class TdaConfig:
         """
         return(self.__secrets["apiKey"])
 
-    def getRedirectUri(self) -> str:
+    @property
+    def redirectUri(self) -> str:
         """  Retrieves the oAuth redirect URI from the secrets file.  This must match the URI used when
             setting up the API key.
 
@@ -65,7 +74,8 @@ class TdaConfig:
         """
         return(self.__secrets["redirectURI"])
 
-    def getAccountNumber(self) -> int:
+    @property
+    def accountNumber(self) -> int:
         """  Retrieves the TD Ameritrade account number from the secrets file.
 
         Parameters
@@ -78,7 +88,8 @@ class TdaConfig:
         """
         return(self.__secrets["accountNumber"])
 
-    def getMongoConnectionString(self) -> str:
+    @property
+    def mongoConnectionString(self) -> str:
         """  Retrieves the MongoDB connection string from the secrets file.
 
         Parameters
@@ -90,3 +101,23 @@ class TdaConfig:
         The MongoDB connection string.
         """
         return(self.__settings["mongoConnection"])
+
+    @staticmethod
+    def _patchFileName(fileName: str, refFileName: str) -> str:
+        """  Patches a file name pulled from a configuration file so that the resulting file name has
+            an absolute path.  If the read file name is already specified with an absolute path, it
+            in unchanged.  Otherwise, the file and its path are considered relative to the config
+            file from where it was read and the resulting absolute pathed name is returned.
+
+        Parameters
+        ----------
+        fileName:  The file name retrieved from a config file.
+        refFileName:  The fully pathed file name to the file from which fileName was read.
+        
+        Returns
+        -------
+        The file name absolute path.
+        """
+        if(not os.path.isabs(fileName)):
+            fileName = os.path.normpath(os.path.join(os.path.dirname(refFileName), fileName))
+        return(fileName)

@@ -26,7 +26,6 @@ class AppArgParser(argparse.ArgumentParser):
 
         # Add positional arguments
         self.add_argument("settings", help = "Specify the JSON configuration file")
-        self.add_argument("secrets", help = "Specify the secrets JSON configuration file")
 
         # Add optional arguments
         self.add_argument("-v", action = "version", help = "Shows the version and exits")
@@ -37,7 +36,8 @@ class AppArgParser(argparse.ArgumentParser):
         self.__namespace = self.parse_args(cliArgs)
         return
 
-    def getSettingsFileName(self) -> str:
+    @property
+    def settingsFileName(self) -> str:
         """ Retrieves the name of the JSON settings file.  This file contains various settings and options
             that are not sensitive.
     
@@ -51,21 +51,8 @@ class AppArgParser(argparse.ArgumentParser):
         """
         return(self.__namespace.settings)
 
-    def getSecretsFileName(self) -> str:
-        """ Retrieves the name of the JSON secrets file.  This file contains various settings and options
-            that are sensitive (e.g. API keys, account numbers, etc.)
-    
-        Parameters
-        ----------
-        None.
-
-        Returns
-        -------
-        The name of the secrets JSON file.
-        """
-        return(self.__namespace.secrets)
-
-    def shouldDeleteTransactions(self) -> bool:
+    @property
+    def deleteTransactions(self) -> bool:
         """ Determines if the command line specifies that all downloaded transaction data is to be deleted.
     
         Parameters
@@ -78,7 +65,8 @@ class AppArgParser(argparse.ArgumentParser):
         """
         return(self.__namespace.Dt)
 
-    def shouldDeletePositions(self) -> bool:
+    @property
+    def deletePositions(self) -> bool:
         """ Determines if the command line specifies that all derived position data is to be deleted.
     
         Parameters

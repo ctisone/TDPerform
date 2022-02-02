@@ -1,3 +1,5 @@
 {
+    "oAuthFile": "oAuthToken.json",
+    "secretsFile": "MySecrets.json",
     "mongoConnection": "mongodb://10.0.2.2:27017"
 }

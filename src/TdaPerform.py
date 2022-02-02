@@ -1,6 +1,7 @@
 #************
 # Imports
 #************
+from multiprocessing.dummy.connection import Client
 from AppArgParser import AppArgParser as ArgParser
 from TdaConfig import TdaConfig
 import pymongo
@@ -27,21 +28,21 @@ def main(cliArgs: List[str]) -> None:
 
     # Parse the command line arguments and find our config file
     parsedCliArgs = ArgParser(cliArgs[1:])
-    config = TdaConfig(parsedCliArgs.getSettingsFileName(), parsedCliArgs.getSecretsFileName())
+    config = TdaConfig(parsedCliArgs.settingsFileName)
 
     # Open the database and get the collections we need
-    mongoClient = MongoClient(config.getMongoConnectionString())
+    mongoClient = MongoClient(config.mongoConnectionString)
     try:
         mongoDb = mongoClient.get_database(MONGO_DATABASE)
         transactions = mongoDb.get_collection(MONGO_TRANSACTION_COLLECTION)
         positions = mongoDb.get_collection(MONGO_POSITION_COLLECTION)
 
         # Delete database collections as specified by the command line args
-        if(parsedCliArgs.shouldDeleteTransactions()):
+        if(parsedCliArgs.deleteTransactions):
             positions.drop()
             transactions.drop()
 
-        if(parsedCliArgs.shouldDeletePositions()):
+        if(parsedCliArgs.deletePositions):
             positions.drop()
 
         # Get the TDA client and download any needed transactions
@@ -56,12 +57,12 @@ def _getTdaClient(cfgFile: TdaConfig) -> TdaClient:
     # Use the oAuth token file to establish a secure connection to TD Ameritrade.  If the oAuth file doesn't exist
     # or the key has expired, an exception will be thrown that will display instructions on how to proceed.
     try:
-        tdaClient = TdaAuth.client_from_token_file(cfgFile.getOAuthTokenFileName(), cfgFile.getApiKey())
+        tdaClient = TdaAuth.client_from_token_file(cfgFile.oAuthTokenFileName, cfgFile.apiKey)
 
     except FileNotFoundError:
         # Because this was written for a headless linux box, there is no way to automatically direct a browser to TD Ameritrade 
         # to run the oAuth authentication process.  This will display instruction to open a browser, go to a link, etc.
-        tdaClient = TdaAuth.client_from_manual_flow(cfgFile.getApiKey(), cfgFile.getRedirectUri(), cfgFile.getOAuthTokenFileName(),
+        tdaClient = TdaAuth.client_from_manual_flow(cfgFile.apiKey, cfgFile.redirectUri, cfgFile.oAuthTokenFileName,
                                                     asyncio=False, token_write_func=None)
     return(tdaClient)
 
@@ -89,7 +90,7 @@ def _downloadBackwards(tdaClient: TdaClient, transactions: MongoCollection, cfgF
     # Keep looping until we get 12 empty time periods (360 days with no transaction data)
     while(nullPeriodCounter < 12):
         # Get the transactions for the window and convert it to a JSON dictionary
-        response = tdaClient.get_transactions(cfgFile.getAccountNumber(), transaction_type=TdaClient.Client.Transactions.TransactionType.ALL,
+        response = tdaClient.get_transactions(cfgFile.accountNumber, transaction_type=TdaClient.Transactions.TransactionType.ALL,
                     symbol="", start_date=start, end_date=end)
         jsonData = response.json()
 
@@ -115,7 +116,7 @@ def _downloadForwards(tdaClient: TdaClient, transactions: MongoCollection, lastT
 
     while(True):
         # Get the transactions for the window and convert it to a JSON dictionary
-        response = tdaClient.get_transactions(cfgFile.getAccountNumber(), transaction_type=TdaClient.Client.Transactions.TransactionType.ALL,
+        response = tdaClient.get_transactions(cfgFile.accountNumber, transaction_type=TdaClient.Transactions.TransactionType.ALL,
                     symbol="", start_date=start, end_date=end)
         jsonData = response.json()
 
