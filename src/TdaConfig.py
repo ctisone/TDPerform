@@ -8,6 +8,16 @@ import os
 class TdaConfig:
     """ Encapsulates the configuration files used by the program """
 
+    #*************************
+    # JSON File Field Names
+    #*************************
+    _OAUTH_FILE_FIELD = "oAuthFile"
+    _SECRETS_FILE_FIELD = "secretsFile"
+    _API_FIELD = "apiKey"
+    _REDIRECT_URI_FIELD = "redirectURI"
+    _ACCOUNT_FIELD = "accountNumber"
+    _MONGO_CONNECT_FIELD = "mongoConnection"
+
     def __init__(self, settingsFileName: str) -> None:
         """ Class constructor. Reads and parses the secrets JSON file.
 
@@ -23,11 +33,11 @@ class TdaConfig:
             self.__settings = json.loads(jsonFile.read())
 
         # Patch the names of files specified on the settings file to be absolute pathed
-        self.__settings["oAuthFile"] = TdaConfig._patchFileName(self.__settings["oAuthFile"], settingsFileName)
-        self.__settings["secretsFile"] = TdaConfig._patchFileName(self.__settings["secretsFile"], settingsFileName)
+        self.__settings[self._OAUTH_FILE_FIELD] = self._patchFileName(self.__settings[self._OAUTH_FILE_FIELD], settingsFileName)
+        self.__settings[self._SECRETS_FILE_FIELD] = self._patchFileName(self.__settings[self._SECRETS_FILE_FIELD], settingsFileName)
 
         # Now read the secrets file
-        with open(self.__settings["secretsFile"], "rt") as jsonFile:
+        with open(self.__settings[self._SECRETS_FILE_FIELD], "rt") as jsonFile:
             self.__secrets = json.loads(jsonFile.read())
         return
 
@@ -41,9 +51,9 @@ class TdaConfig:
         
         Returns
         -------
-        The name of the oAuth token file.
+        The absolute path name of the oAuth token file.
         """
-        return(self.__settings["oAuthFile"])
+        return(self.__settings[self._OAUTH_FILE_FIELD])
 
     @property
     def apiKey(self) -> str:
@@ -57,7 +67,7 @@ class TdaConfig:
         -------
         The TD Ameritrade account number.
         """
-        return(self.__secrets["apiKey"])
+        return(self.__secrets[self._API_FIELD])
 
     @property
     def redirectUri(self) -> str:
@@ -72,7 +82,7 @@ class TdaConfig:
         -------
         The oAuth redirect URI string.
         """
-        return(self.__secrets["redirectURI"])
+        return(self.__secrets[self._REDIRECT_URI_FIELD])
 
     @property
     def accountNumber(self) -> int:
@@ -86,7 +96,7 @@ class TdaConfig:
         -------
         The TD Ameritrade account number.
         """
-        return(self.__secrets["accountNumber"])
+        return(self.__secrets[self._ACCOUNT_FIELD])
 
     @property
     def mongoConnectionString(self) -> str:
@@ -100,7 +110,7 @@ class TdaConfig:
         -------
         The MongoDB connection string.
         """
-        return(self.__settings["mongoConnection"])
+        return(self.__settings[self._MONGO_CONNECT_FIELD])
 
     @staticmethod
     def _patchFileName(fileName: str, refFileName: str) -> str:
